@@ -1,0 +1,10 @@
+.bg-wallpaper {
+  background-color: #111111;
+  background-image: linear-gradient(
+    32deg,
+    rgba(0, 0, 0, 0.74) 30px,
+    transparent
+  );
+  background-size: 60px 60px;
+  background-position: -5px -5px;
+}
