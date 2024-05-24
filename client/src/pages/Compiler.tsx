@@ -13,6 +13,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { updateFullCode } from "@/redux/slices/compilerSlice";
 import { toast } from "sonner";
+import { serverUrl } from "@/utils/Constants";
 
 const Compiler = () => {
   const { urlId } = useParams();
@@ -20,7 +21,7 @@ const Compiler = () => {
 
   const loadCode = async () => {
     try {
-      const response = await axios.post("http://localhost:4000/compiler/load", {
+      const response = await axios.post(`${serverUrl}/compiler/load`, {
         urlId: urlId,
       });
       dispatch(updateFullCode(response.data.fullCode));

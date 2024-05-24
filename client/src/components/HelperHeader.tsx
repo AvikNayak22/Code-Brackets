@@ -26,6 +26,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { toast } from "sonner";
+import { serverUrl } from "@/utils/Constants";
 
 const HelperHeader = () => {
   const [saveLoading, setSaveLoading] = useState<boolean>(false);
@@ -47,7 +48,7 @@ const HelperHeader = () => {
   const handleSaveCode = async () => {
     setSaveLoading(true);
     try {
-      const response = await axios.post("http://localhost:4000/compiler/save", {
+      const response = await axios.post(`${serverUrl}/compiler/save`, {
         fullCode: fullCode,
       });
       navigate(`/compiler/${response.data.url}`, { replace: true });
