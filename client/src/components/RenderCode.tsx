@@ -12,7 +12,7 @@ const RenderCode = () => {
   )}`;
 
   return (
-    <div className="bg-white  h-[calc(100vh-60px)]">
+    <div className="bg-white h-[calc(100vh-60px)]">
       <iframe className="w-full h-full" src={iframeCode} />
     </div>
   );

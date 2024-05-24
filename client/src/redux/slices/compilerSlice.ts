@@ -8,6 +8,8 @@ export interface CompilerSliceStateType {
   };
 
   currentLanguage: "html" | "css" | "javascript";
+
+  currentWidth: number;
 }
 
 const initialState: CompilerSliceStateType = {
@@ -41,10 +43,10 @@ const initialState: CompilerSliceStateType = {
 
     h1 { 
       font-family: sans-serif; 
-      font-size: 110px; 
+      font-size: 50px; 
       text-align: center; 
       color: #318D45; 
-      margin-top: 250px; 
+      margin-top: 100px; 
     } 
 
     .bounce { 
@@ -108,6 +110,7 @@ const initialState: CompilerSliceStateType = {
     `,
   },
   currentLanguage: "html",
+  currentWidth: window.innerWidth,
 };
 
 const compilerSlice = createSlice({
@@ -129,9 +132,16 @@ const compilerSlice = createSlice({
     ) => {
       state.fullCode = action.payload;
     },
+    setCurrentWidth: (state, action: PayloadAction<number>) => {
+      state.currentWidth = action.payload;
+    },
   },
 });
 
 export default compilerSlice.reducer;
-export const { updateCurrentLanguage, updateCodeValue, updateFullCode } =
-  compilerSlice.actions;
+export const {
+  updateCurrentLanguage,
+  updateCodeValue,
+  updateFullCode,
+  setCurrentWidth,
+} = compilerSlice.actions;

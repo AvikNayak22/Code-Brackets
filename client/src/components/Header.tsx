@@ -1,8 +1,24 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Braces } from "lucide-react";
+import { setCurrentWidth } from "@/redux/slices/compilerSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const handleResize = () => {
+    dispatch(setCurrentWidth(window.innerWidth));
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [window.innerWidth]);
+
   return (
     <nav className="w-full h-[60px] bg-[#111111] text-white p-3 flex justify-between items-center">
       <Link to="/">

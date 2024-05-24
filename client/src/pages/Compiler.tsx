@@ -10,13 +10,17 @@ import {
 } from "@/components/ui/resizable";
 import { handleError } from "@/utils/handleError";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateFullCode } from "@/redux/slices/compilerSlice";
 import { toast } from "sonner";
 import { serverUrl } from "@/utils/Constants";
+import { RootState } from "@/redux/store";
 
 const Compiler = () => {
   const { urlId } = useParams();
+  const windowWidth = useSelector(
+    (state: RootState) => state.compilerSlice.currentWidth
+  );
   const dispatch = useDispatch();
 
   const loadCode = async () => {
@@ -42,9 +46,12 @@ const Compiler = () => {
   }, [urlId]);
 
   return (
-    <ResizablePanelGroup direction="horizontal" className="">
+    <ResizablePanelGroup
+      direction={windowWidth > 768 ? "horizontal" : "vertical"}
+      className="!h-[calc(100vh-60px)]"
+    >
       <ResizablePanel
-        className="h-[calc(100vh-60px)] min-w-[350px]"
+        className={`${windowWidth > 768 ? "h-[600px]" : "h-[500px]"}`}
         defaultSize={50}
       >
         <HelperHeader />
