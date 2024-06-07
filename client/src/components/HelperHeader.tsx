@@ -80,7 +80,7 @@ const HelperHeader = () => {
           ) : (
             <>
               {" "}
-              <Save size={16} /> Save
+              <Save size={20} /> Save
             </>
           )}
         </Button>
