@@ -5,7 +5,7 @@ const Home = () => {
       <h1 className=" text-4xl md:text-6xl font-extrabold text-center drop-shadow-lg">
         Code Brackets
       </h1>
-      <p className="text-gray-300  text-lg md:text-2xl text-center text-pretty">
+      <p className="text-gray-300 mx-auto text-lg md:text-2xl text-center text-pretty">
         Sit down, relax and write some code! This code editor is your comfort
         zone.
       </p>
