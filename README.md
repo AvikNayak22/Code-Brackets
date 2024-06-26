@@ -1,6 +1,6 @@
 # Code Brackets
 
-Code Brackets is an online code editor designed for ease of use. It provides a platform for developers to write and test HTML, CSS, and JavaScript code snippets conveniently in one place.
+Code Brackets is a web-based code editor application that provides a seamless environment for writing and previewing HTML, CSS, and JavaScript code snippets.
 
 ## Screenshots
 1. Home page:
@@ -15,23 +15,21 @@ Code Brackets is an online code editor designed for ease of use. It provides a p
 
 ## Features
 
-1. **Code Editing**: Easily write and edit HTML, CSS, and JavaScript code in separate sections for a streamlined coding experience.
+1. **Code Editing**: Supports editing and syntax highlighting for HTML, CSS, and JavaScript within a single interface.
    
-2. **Live Rendering**: Instantly see the output of your code changes in real time with the live rendering feature.
+2. **Live Preview**: Real-time preview of code changes rendered in an embedded iframe.
 
-3. **Save and Share**: Save your code snippets to the cloud and share them with others using unique URLs.
+3. **Save and Share**: Users can save and share their code snippets via unique URLs.
 
-4. **Syntax Highlighting**: Benefit from syntax highlighting for HTML, CSS, and JavaScript code for better code readability.
-
-5. **Dark Theme**:  Reduce eye strain during extended coding sessions.
+5. **Responsive Design**: Easily adapts to different screen sizes and orientations.
 
 ## Technologies Used
 
-- **Frontend**: React.js, React Router, Redux, Tailwind CSS
+- **Frontend**: React, React Router, Redux Toolkit, Tailwind CSS, Shadcn UI 
   
-- **Backend**: Node.js, Express.js, MongoDB, Mongoose
+- **Backend**: PocketBase for managing and storing code snippets.
   
-- **External Libraries**: CodeMirror, Axios, Lucide icons, Sonner
+- **Other Libraries**: CodeMirror, Axios, Lucide icons
 
 ## Installation
 
@@ -44,21 +42,15 @@ Code Brackets is an online code editor designed for ease of use. It provides a p
    ```
    cd Code-Brackets
    ```
-3. Install dependencies for both the client and server:
+3. Install dependencies:
    ```
-   cd client
    npm install
    ```
+4. Create a `.env` file in the root directory of the project with the following content:
    ```
-   cd ../server
-   npm install
+   VITE_POCKETBASE_URL=your-pocketbase-url
    ```
-4. Create a `.env` file in the `server` directory with the following content:
-   ```
-   MONGO_URL=your-mongodb-connection-string
-   PORT=your-server-port-number
-   ```
-5. Start the development servers:
+5. Start the development server:
    ```
    npm run dev
    ```
