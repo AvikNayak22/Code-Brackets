@@ -2,7 +2,15 @@
 
 Code Brackets is an online code editor designed for ease of use. It provides a platform for developers to write and test HTML, CSS, and JavaScript code snippets conveniently in one place.
 
-![image](https://github.com/AvikNayak22/Code-Brackets/assets/110925067/e6383325-0f68-4481-8590-9ec50e924a93)
+## Screenshots
+1. Home page:
+   
+   ![image](https://github.com/AvikNayak22/Code-Brackets/assets/110925067/43d7a7a9-645a-47e8-95c0-b7eb9d344e29)
+
+2. Compiler page:
+   
+   ![image](https://github.com/AvikNayak22/Code-Brackets/assets/110925067/9a04130a-f833-48d3-8252-96f0840685fe)
+
 
 
 ## Features
