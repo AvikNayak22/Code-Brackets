@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
 import {
   CompilerSliceStateType,
   updateCurrentLanguage,
@@ -26,7 +25,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { toast } from "sonner";
-import { serverUrl } from "@/utils/Constants";
+import { pb } from "@/utils/pocketbase";
 
 const HelperHeader = () => {
   const [saveLoading, setSaveLoading] = useState<boolean>(false);
@@ -48,11 +47,16 @@ const HelperHeader = () => {
   const handleSaveCode = async () => {
     setSaveLoading(true);
     try {
-      const response = await axios.post(`${serverUrl}/compiler/save`, {
-        fullCode: fullCode,
+      const newCode = await pb.collection("Codes").create({
+        fullCode: {
+          html: fullCode.html,
+          css: fullCode.css,
+          javascript: fullCode.javascript,
+        },
       });
-      navigate(`/compiler/${response.data.url}`, { replace: true });
+      navigate(`/compiler/${newCode.id}`, { replace: true });
     } catch (error) {
+      toast("Unable to save code.");
       handleError(error);
     } finally {
       setSaveLoading(false);

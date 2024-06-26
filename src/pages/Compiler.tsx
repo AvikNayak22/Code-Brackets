@@ -9,40 +9,34 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { handleError } from "@/utils/handleError";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { updateFullCode } from "@/redux/slices/compilerSlice";
 import { toast } from "sonner";
-import { serverUrl } from "@/utils/Constants";
 import { RootState } from "@/redux/store";
+import { pb } from "@/utils/pocketbase";
 
 const Compiler = () => {
-  const { urlId } = useParams();
   const windowWidth = useSelector(
     (state: RootState) => state.compilerSlice.currentWidth
   );
+  const { urlId } = useParams();
   const dispatch = useDispatch();
 
   const loadCode = async () => {
     try {
-      const response = await axios.post(`${serverUrl}/compiler/load`, {
-        urlId: urlId,
-      });
-      dispatch(updateFullCode(response.data.fullCode));
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        if (error?.response?.status === 500) {
-          toast("Invalid URL, Default Code Loaded");
-        }
+      pb.autoCancellation(false);
+      if (urlId) {
+        const existingCode = await pb.collection("Codes").getOne(urlId);
+        dispatch(updateFullCode(existingCode.fullCode));
       }
-      handleError(error);
+    } catch (error) {
+      toast("Invalid URL, Default Code Loaded");
+      handleError(Error);
     }
   };
 
   useEffect(() => {
-    if (urlId) {
-      loadCode();
-    }
+    loadCode();
   }, [urlId]);
 
   return (
